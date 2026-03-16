@@ -1,15 +1,161 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>TP2</title>
-<link rel="stylesheet" href="style.css">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP2 - Formulaire d'inscription</title>
+    <link rel="stylesheet" href="style.css">
 
+</head>
 <body>
 
-<h1>TP2</h1>
-<p>Deuxième TP HTML CSS</p>
+    <h1>TP2 : Formulaire d'inscription</h1>
+    
+    <form action="#" method="POST" enctype="multipart/form-data">
+            <fieldset>
+            <legend>Informations personnelles</legend>
 
+            <div class="form-group">
+                <label for="lastname">Nom :</label>
+                <input type="text" id="lastname" name="lastname" required autocomplete="family-name" 
+                       oninvalid="this.setCustomValidity('Veuillez renseigner votre nom.')" 
+                       oninput="this.setCustomValidity('')">
+            </div>
+
+            <div class="form-group">
+                <label for="firstname">Prénom :</label>
+                <input type="text" id="firstname" name="firstname" required autocomplete="given-name"
+                       oninvalid="this.setCustomValidity('Veuillez renseigner votre prénom.')" 
+                       oninput="this.setCustomValidity('')">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required autocomplete="email"
+                       title="Veuillez fournir une adresse email valide."
+                       oninvalid="if(this.validity.typeMismatch) this.setCustomValidity('Format d\'email invalide.'); else this.setCustomValidity('Ce champ est obligatoire.');" 
+                       oninput="this.setCustomValidity('')">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Téléphone :</label>
+                <input type="tel" id="phone" name="phone" required autocomplete="tel" 
+                       pattern="^(?:0|\+33|0033)[1-9]([-. ]?[0-9]{2}){4}$"
+                       title="Veuillez fournir un numéro de téléphone français valide (ex: 06 12 34 56 78)."
+                       oninvalid="if(this.validity.patternMismatch) this.setCustomValidity('Format français obligatoire (ex: 0612345678).'); else this.setCustomValidity('Ce champ est obligatoire.');" 
+                       oninput="this.setCustomValidity('')">
+            </div>
+
+            <div class="form-group">
+                <label for="bday">Date de naissance :</label>
+                <input type="date" id="bday" name="bday" required autocomplete="bday" 
+                       max="2008-03-16"
+                       title="Vous devez avoir au moins 18 ans."
+                       oninvalid="if(this.validity.rangeOverflow) this.setCustomValidity('Vous devez avoir au moins 18 ans.'); else this.setCustomValidity('Veuillez renseigner votre date de naissance.');" 
+                       oninput="this.setCustomValidity('')">
+            </div>
+
+            <div class="form-group">
+                <label for="country">Pays :</label>
+                <input list="countries" name="country" id="country" required autocomplete="country"
+                       oninvalid="this.setCustomValidity('Veuillez choisir un pays.')" 
+                       oninput="this.setCustomValidity('')">
+                <datalist id="countries">
+                    <select name="countries_fallback">
+                        <option value="France">France</option>
+                        <option value="Belgique">Belgique</option>
+                        <option value="Suisse">Suisse</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Luxembourg">Luxembourg</option>
+                    </select>
+                </datalist>
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Sécurité</legend>
+
+            <div class="form-group">
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" required autocomplete="new-password"
+                       pattern="(?=.*\d)(?=.*[A-Z]).{8,}"
+                       title="Le mot de passe doit contenir au moins 8 caractères, dont une majuscule et un chiffre."
+                       oninvalid="if(this.validity.patternMismatch) this.setCustomValidity('Min 8 caractères, 1 majuscule, 1 chiffre.'); else this.setCustomValidity('Ce champ est obligatoire.');" 
+                       oninput="this.setCustomValidity(''); document.getElementById('password_confirm').setCustomValidity(document.getElementById('password_confirm').value !== this.value ? 'Les mots de passe ne correspondent pas.' : '');">
+            </div>
+
+            <div class="form-group">
+                <label for="password_confirm">Confirmation du mot de passe :</label>
+                <input type="password" id="password_confirm" name="password_confirm" required autocomplete="new-password"
+                       oninvalid="if(!this.value) this.setCustomValidity('Veuillez confirmer votre mot de passe.');"
+                       oninput="this.setCustomValidity(this.value !== document.getElementById('password').value ? 'Les mots de passe ne correspondent pas.' : '')">
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Profil</legend>
+
+            <div class="form-group">
+                <label>Genre :</label>
+                <input type="radio" id="gender_m" name="gender" value="homme" required 
+                       oninvalid="this.setCustomValidity('Veuillez sélectionner votre genre.')" 
+                       onchange="this.setCustomValidity('')">
+                <label for="gender_m" class="inline-label">Homme</label>
+                
+                <input type="radio" id="gender_f" name="gender" value="femme" required
+                       onchange="this.setCustomValidity('')">
+                <label for="gender_f" class="inline-label">Femme</label>
+                
+                <input type="radio" id="gender_o" name="gender" value="autre" required
+                       onchange="this.setCustomValidity('')">
+                <label for="gender_o" class="inline-label">Autre</label>
+            </div>
+
+            <div class="form-group">
+                <label>Centres d'intérêt :</label>
+                <input type="checkbox" id="interest_tech" name="interests" value="tech">
+                <label for="interest_tech" class="inline-label">Technologie</label>
+
+                <input type="checkbox" id="interest_sport" name="interests" value="sport">
+                <label for="interest_sport" class="inline-label">Sport</label>
+
+                <input type="checkbox" id="interest_music" name="interests" value="music">
+                <label for="interest_music" class="inline-label">Musique</label>
+            </div>
+
+            <div class="form-group">
+                <label for="bio">Biographie :</label><br>
+                <textarea id="bio" name="bio" rows="5" cols="50" required maxlength="500" placeholder="Décrivez-vous brièvement (max 500 caractères)..."
+                          oninvalid="this.setCustomValidity('Veuillez rédiger une brève biographie.')" 
+                          oninput="this.setCustomValidity('')"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="avatar">Photo de profil :</label><br>
+                <input style="margin-top: 10px;" type="file" id="avatar" name="avatar" required accept="image/*"
+                       oninvalid="this.setCustomValidity('Veuillez ajouter une photo de profil.')" 
+                       oninput="this.setCustomValidity('')">
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Validation</legend>
+
+            <div class="form-group">
+                <input type="checkbox" id="cgu" name="cgu" required
+                       oninvalid="this.setCustomValidity('Vous devez accepter les CGU pour vous inscrire.')" 
+                       onchange="this.setCustomValidity('')">
+                <label for="cgu" class="inline-label" style="font-weight: bold;">J'accepte les Conditions Générales d'Utilisation</label>
+            </div>
+
+            <div style="margin-top: 15px;">
+                <button type="submit">S'inscrire</button>
+            </div>
+        </fieldset>
+
+    </form>
 </body>
 </html>

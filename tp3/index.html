@@ -1,15 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>TP3</title>
-<link rel="stylesheet" href="style.css">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omega - Accueil</title>
 
+    <meta property="og:title" content="Omega - Accueil">
+    <meta property="og:description" content="Site vitrine de l'entreprise Omega">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
 <body>
 
-<h1>TP3</h1>
-<p>Troisième TP HTML CSS</p>
+    <header>
+        <h1>Omega</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="pages/about.html">À propos de l'équipe</a></li>
+                <li><a href="pages/services.html">Nos Services</a></li>
+                <li><a href="pages/gallery.html">Galerie</a></li>
+                <li><a href="pages/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main>
+        <section class="hero">
+            <img src="images/hero.jpg" alt="Nos bureaux">
+            <div class="hero-overlay">
+                <h2>Bienvenue chez Omega</h2>
+                <p>Découvrez nos services sur mesure.</p>
+            </div>
+        </section>
+
+        <video width="100%" autoplay muted loop>
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la balise vidéo.
+        </video>
+
+        <section class="services-summary">
+            <h2>Résumé de nos services</h2>
+            <ul class="services-list">
+                <li>
+                    <strong>Développement Web</strong>
+                    <p>Création de sites modernes et performants.</p>
+                </li>
+                <li>
+                    <strong>Design de sites</strong>
+                    <p>Interfaces esthétiques et ergonomiques.</p>
+                </li>
+                <li>
+                    <strong>Conseil informatique</strong>
+                    <p>Accompagnement et stratégie digitale.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="testimonials">
+            <h2>Témoignages clients</h2>
+            <div class="testimonial-grid">
+                <blockquote>
+                    <p>"Très bon travail pour notre site web ! Je recommande."</p>
+                    <cite>- Client XYZ</cite>
+                </blockquote>
+                <blockquote>
+                    <p>"Équipe sérieuse et efficace."</p>
+                    <cite>- Entreprise ABC</cite>
+                </blockquote>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Plan du site :</p>
+        <p>
+            <a href="index.html">Accueil</a> |
+            <a href="pages/about.html">À propos</a> |
+            <a href="pages/services.html">Services</a> |
+            <a href="pages/gallery.html">Galerie</a> |
+            <a href="pages/contact.html">Contact</a>
+        </p>
+        <p>&copy; 2026 Omega</p>
+    </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>
